@@ -1,6 +1,5 @@
-
 "use client";
-
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 // Define the structure of a beverage from Supabase
@@ -170,10 +169,13 @@ export default function BeverageExplorer({
       {/* Beverage cards */}
       <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {filteredProducts.map((product) => (
-          <article
+          <Link
             key={product.id}
-            className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-amber-500/50"
+            href={`/explore/${product.id}`}
+            className="group rounded-xl border border-slate-700 bg-slate-900 p-5 transition hover:border-amber-400"
           >
+
+        
             {/* Beverage name */}
             <h2 className="text-xl font-semibold">
               {product.name}
@@ -221,7 +223,7 @@ export default function BeverageExplorer({
                 {product.description}
               </p>
             )}
-          </article>
+          </Link>
         ))}
       </div>
     </div>
